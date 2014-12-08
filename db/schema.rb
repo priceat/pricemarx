@@ -11,11 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205142119) do
+ActiveRecord::Schema.define(version: 20141206180145) do
+
+  create_table "pricemarks", force: true do |t|
+    t.text     "url"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pricemarks", ["topic_id"], name: "index_pricemarks_on_topic_id"
+  add_index "pricemarks", ["user_id"], name: "index_pricemarks_on_user_id"
+
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

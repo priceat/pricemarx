@@ -1,0 +1,22 @@
+<h1>Listing Pricemarx</h1>
+<%= link_to 'New Pricemark', new_pricemark_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pricemarks.each do |pricemark| %>
+      <tr>
+        <td><%= link_to pricemark.url, pricemark.url %></td>
+        <%= link_to 'Destroy', pricemark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
