@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :pricemarks
   resources :topics
 
-  root to: 'welcome#index'
+  root to: 'pricemarks#index'
 
 end
