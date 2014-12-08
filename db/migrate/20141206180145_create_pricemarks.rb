@@ -3,7 +3,7 @@ class CreatePricemarks < ActiveRecord::Migration
     create_table :pricemarks do |t|
       t.text :url
       t.references :user, index: true
-      t.references :topic, index: true
+      t.string :title
 
       t.timestamps
     end

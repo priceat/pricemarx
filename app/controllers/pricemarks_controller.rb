@@ -3,6 +3,9 @@ class PricemarksController < ApplicationController
 
   def index
     @pricemarks = current_user.pricemarks
+    @user_tags = current_user.bookmarks.tag_counts
+    @tags = Pricemark.all.tag_counts
+    #@favorites = current_user.favorite_pricemarks
   end
 
   def show
@@ -52,7 +55,7 @@ class PricemarksController < ApplicationController
   end
 
   def pricemark_params
-      params.require(:pricemark).permit(:url, :user_id, :topics[])
+      params.require(:pricemark).permit(:url, :tag_list, :title)
   end
 
 end

@@ -15,6 +15,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro', '1.0'
 gem 'bootstrap-sass'
+gem 'acts-as-taggable-on'
 
 
  group :production do
