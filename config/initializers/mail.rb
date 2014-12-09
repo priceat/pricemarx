@@ -1,27 +1,12 @@
-ActionMailer::Base.smtp_settings = {
-  port:              587, 
-  address:           'smtp.mailgun.org',
-  user_name:         ENV['MAILGUN_SMTP_LOGIN'],
-  password:          ENV['MAILGUN_SMTP_PASSWORD'],
-  domain:            'app32243029.mailgun.org',
-  authentication:    :plain,
-  content_type:      'text/html'
-}
-ActionMailer::Base.delivery_method = :smtp
-
-# Makes debugging *way* easier.
-ActionMailer::Base.raise_delivery_errors = true
-
-class DevelopmentMailInterceptor
-  def self.delivering_email(message)
-    message.to =  'tate@app32243029.mailgun.org'
-    message.cc = nil
-    message.bcc = nil
-  end
-end
-
-# Locally, outgoing mail will be 'intercepted' by the
-# above DevelopmentMailInterceptor before going out
-if Rails.env.development?
-  ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
+if Rails.env.development? || Rails.env.production?
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default_url_options = { host: 'http://pricemarx.herokuapp.com' }
+  ActionMailer::Base.smtp_settings = {
+    authentication: :plain,
+    address: "smtp.mailgun.org",
+    port: 587,
+    # domain: ENV['mailgun_domain'],
+    user_name: ENV['MAILGUN_SMTP_LOGIN'],
+    password: ENV['MAILGUN_SMTP_PASSWORD']
+  }
 end

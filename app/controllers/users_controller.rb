@@ -5,16 +5,34 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    respond_to do |format| 
-      if @user.save
-        format.html { redirect_to root_url notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+  @user = User.new(params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to tags_path, notice: "Thank you for signing up!"
+    else
+      render "new"
     end
+  end
+
+   def show
+      @user = User.find(params[:id])
+   end
+
+   def update
+     if current_user.update_attributes(user_params)
+       flash[:notice] = "User information updated"
+       redirect_to pricemarks_path
+     else
+       flash[:error] = "Invalid user information"
+       redirect_to edit_user_registration_path
+     end
+   end
+  
+  def destroy
+    user = User.find(params[:id])
+    
+    user.destroy
+    redirect_to root_path, :notice => "User deleted."
   end
 
   private

@@ -16,6 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro', '1.0'
 gem 'bootstrap-sass'
 gem 'acts-as-taggable-on'
+gem 'griddler', '~> 1.0.0'
+gem 'griddler-mailgun', '~> 1.0.1'
 
 
  group :production do
@@ -25,4 +27,6 @@ gem 'acts-as-taggable-on'
  
  group :development do
    gem 'sqlite3'
+   gem 'binding_of_caller'
+   gem 'better_errors'
  end

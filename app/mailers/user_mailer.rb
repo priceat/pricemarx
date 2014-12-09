@@ -1,9 +1,10 @@
-class UserMailer < ApplicationMailer
-   default from: 'priceat@gmail.com'
+class UserMailer < ActionMailer::Base
  
-  def welcome_email(user)
-    @user = user
-    @url  = 'https://pricemarx.herokuapp.com/'
-    mail(to: @user.email, subject: 'Welcome to pricemarx.')
-  end
+   def receive(email)
+    page = Page.find_by(address: email.to.first)
+    page.emails.create(
+      subject: email.subject,
+      body: email.body
+    )
+    end
 end
