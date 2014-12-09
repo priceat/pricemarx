@@ -9,25 +9,24 @@ class EmailProcessor
   def process
     user = User.find_by(email: @email.from[:email])
     if user
-      links = scan_url(@email.body)
-      links.each do |link|
-        pricemark = Pricemark.new(url: link)
-        pricemark.tags = tag_list.add(scan_hashtag(@email.subject))
-        user.pricemarks << pricemark
-      end
-      user.save
-    else
-      respond_email_once_to_unregistered_user
+        link = @email.body
+        pricemark = user.pricemarks.new(url: link)
+        tags = @email.subject.split.map {|tag| tag.sub(/\A#/, '') }
+        tags.each {|tag| pricemark.tag_list.add(tag)}
+      
+        pricemark.save
+    #else
+      #respond_email_once_to_unregistered_user
     end
   end
 
-  def respond_email_once_to_unregistered_user
-    unsigned_up_user = UnsignedUpUser.find_by(email: @email.from[:email])
-    unless unsigned_up_user
-      user = UnsignedUpUser.create(name: @email.from[:name], email: @email.from[:email])
-      user.send_email
-    end
-  end
+  #def respond_email_once_to_unregistered_user
+   # unsigned_up_user = UnsignedUpUser.find_by(email: @email.from[:email])
+   # unless unsigned_up_user
+    #  user = UnsignedUpUser.create(name: @email.from[:name], email: @email.from[:email])
+     # user.send_email
+    #end
+  #end
 
   private
     def scan_hashtag(subject)
