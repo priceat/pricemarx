@@ -1,6 +1,4 @@
 class EmailProcessor
-  SIMPLE_URL_PATTERN = /https?:\/\/[\S]+/
-  HASHTAG_PATTERN = /(?:\s|^)(?:#(?!(?:\d+|\w+?_|_\w+?)(?:\s|$)))(\w+)(?=\s|$)/i
 
   def initialize(email)
     @email = email
@@ -28,12 +26,4 @@ class EmailProcessor
     #end
   #end
 
-  private
-    def scan_hashtag(subject)
-      subject.scan(HASHTAG_PATTERN).flatten
-    end
-
-    def scan_url(body)
-      body.scan(SIMPLE_URL_PATTERN).flatten
-    end
 end

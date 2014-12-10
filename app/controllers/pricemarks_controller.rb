@@ -3,10 +3,16 @@ class PricemarksController < ApplicationController
   before_filter :authorize, only: [:create, :edit, :update]
 
   def index
-    @pricemarks = current_user.pricemarks
+    @pricemarks = Pricemark.all
     @user_tags = current_user.pricemarks.tag_counts
     @tags = Pricemark.all.tag_counts
     #@favorites = current_user.favorite_pricemarks
+  end
+
+  def my_index
+    @pricemarks = current_user.pricemarks
+    @user_tags = current_user.pricemarks.tag_counts
+    @tags = Pricemark.all.tag_counts
   end
 
   def show

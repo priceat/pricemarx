@@ -1,22 +1,17 @@
-<h1>Listing Pricemarx</h1>
-<%= link_to 'New Pricemark', new_pricemark_path %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pricemarks.each do |pricemark| %>
-      <tr>
-        <td><%= link_to pricemark.url, pricemark.url %></td>
-        <%= link_to 'Destroy', pricemark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+<h1>All Pricemarx</h1>
+    <div class ="row">
+      
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+<div class="col-md-2">
+  <center>
+  <%= link_to tag.name, tag_path(tag), :class => css_class %>
+  <p><xs>Number of Links: </xs> </n>
+    <%= tag.count %></p>
+  </center>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
+   

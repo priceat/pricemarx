@@ -8,12 +8,12 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :tags
+  resources :tag
   resources :incoming
   resources :pricemarks do
     resources :favorites, only: [:create, :destroy]
   end
   
-  root to: 'users#new'
+  root to: 'pricemarks#index'
 
 end

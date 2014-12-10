@@ -1,0 +1,19 @@
+<h1>Links Tagged as <%= @tag.name %></h1>
+
+<% if @pricemarks.count > 0 %>
+
+  <ul>
+
+  <% @pricemarks.each do |pricemark| %>
+
+    <li><%= link_to pricemark.url, pricemark.url %></li>
+
+  <% end %>
+
+  </ul>
+
+<% else %>
+
+  <p>This tag is not associated with any PriceMarx. Go! Find!</p>
+
+<% end %>
