@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :set_user
   
   def new
   end
@@ -20,9 +19,3 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: "Logged out!"
   end
 end
-
-  private
-
-  def set_user
-    @current_user = User.find(params[:id])
-  end

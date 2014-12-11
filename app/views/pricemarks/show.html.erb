@@ -7,6 +7,7 @@
   <strong>User:</strong>
   <%= @pricemark.user %>
 </p>
+<li><%= render partial: 'favorites/favorite', locals: { pricemark: @pricemark } %></li>
 
 <%= link_to 'Edit', edit_pricemark_path(@pricemark) %> |
 <%= link_to 'Back', pricemarks_path %>

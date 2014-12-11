@@ -7,4 +7,5 @@ class Pricemark < ActiveRecord::Base
   default_scope { order('created_at DESC') }
 
   @tags = Pricemark.tag_counts_on(:tags)
+  
 end

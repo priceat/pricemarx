@@ -4,18 +4,21 @@ class PricemarksController < ApplicationController
 
   def index
     @pricemarks = Pricemark.all
-    @user_tags = current_user.pricemarks.tag_counts
     @tags = Pricemark.all.tag_counts
-    #@favorites = current_user.favorite_pricemarks
   end
 
   def my_index
-    @pricemarks = current_user.pricemarks
-    @user_tags = current_user.pricemarks.tag_counts
-    @tags = Pricemark.all.tag_counts
+    @pricemarks = current_user.pricemarks.all
+    @user_tags = @pricemarks.tag_counts
+    favorites = Favorite.where(user_id: current_user)
+    favorite_pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id))
+    @favorite_tags = favorite_pricemarks.tag_counts
+
   end
 
   def show
+    @tag = Tag.find(params[:id])
+    @pricemarks = Pricemark.tagged_with(@tag.name)
   end
 
   def new

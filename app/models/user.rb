@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
    has_many :pricemarks, dependent: :destroy
    has_many :favorites, dependent: :destroy
    has_many :favorite_pricemarks, :through => :favorites, :source => :pricemark
+
+   def favorited(pricemark)
+    favorites.where(pricemark_id: pricemark.id).first
+   end
 end

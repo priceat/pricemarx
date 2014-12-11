@@ -1,0 +1,29 @@
+<div class="container">
+<h1>My Pricemarx</h1>
+    <div class ="row">
+    <% tag_cloud(@user_tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+<div class="col-md-2">
+  <center>
+  <%= link_to tag.name, tag_path(tag), :class => css_class %>
+  <p><xs>Number of Links: </xs> </n>
+    <%= tag.count %></p>
+  </center>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+<h1>My Favorites</h1>
+    <div class ="row">
+      <% tag_cloud(@favorite_tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+<div class="col-md-2">
+  <center>
+  <%= link_to tag.name, edit_tag_path(tag), :class => css_class %>
+  <p><xs>Number of Links: </xs> </n>
+    <%= tag.count %></p>
+  </center>
+    </div>
+    <% end %>
+  </div>
+</div>
