@@ -8,12 +8,17 @@ class PricemarksController < ApplicationController
   end
 
   def my_index
-    @pricemarks = current_user.pricemarks.all
-    @user_tags = @pricemarks.tag_counts
-    favorites = Favorite.where(user_id: current_user)
-    favorite_pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id))
-    @favorite_tags = favorite_pricemarks.tag_counts
-
+    if logged_in?
+      @pricemarks = current_user.pricemarks.all
+      @user_tags = @pricemarks.tag_counts
+      favorites = Favorite.where(user_id: current_user)
+      favorite_pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id))
+      @favorite_tags = favorite_pricemarks.tag_counts
+      render pricemarks_my_index_path
+    else 
+      flash[:error] = "You have to be logged in, cat!"
+      redirect_to login_path
+    end
   end
 
   def show

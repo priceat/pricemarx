@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
    def favorited(pricemark)
     favorites.where(pricemark_id: pricemark.id).first
    end
+
 end

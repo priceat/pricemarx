@@ -1,4 +1,4 @@
-<h1>Links Tagged as <%= @tag.name.titleize %></h1>
+<div class="tag_head">Links Tagged as <%= @tag.name.titleize %></div>
 
 <% if @pricemarks.count > 0 %>
 <table class="table table-striped">
@@ -16,7 +16,9 @@
       <td><%= link_to p.url, p.url %></td> 
       <td><%= time_ago_in_words(p.created_at) %> ago</td>
       <td><div class='signature'><%= p.user.email %></td></div>
+      <% if logged_in? %>
       <td><%= render partial: 'favorites/favorite', locals: { pricemark: p } %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
