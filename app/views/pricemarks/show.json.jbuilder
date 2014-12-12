@@ -1,0 +1,1 @@
+json.extract! @pricemark, :id, :title, :url, :tag_list, :user_id, :created_at, :updated_at

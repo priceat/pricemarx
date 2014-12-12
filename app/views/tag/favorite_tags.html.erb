@@ -1,16 +1,27 @@
-<h1>Links Tagged as <%= @tag.name %></h1>
+<h1>Links Tagged as <%= @tag.name.titleize %></h1>
 
 <% if @pricemarks.count > 0 %>
-
-  <ul>
-
-  <% @pricemarks.each do |p| %>
-
-    <li><%= link_to p.url, p.url %> 
-
+<table class="table table-striped">
+  <thead>
+   <tr>
+      <th>URL </th>
+      <th> Day Added </th>
+      <th> Uploader </th>
+      <th colspan="<%= @colspan %>"></th>
+   </tr>
+  </thead>
+    <tbody>
+       <% @pricemarks.each do |p| %>
+    <tr>
+      <td><%= link_to p.url, p.url %></td> 
+      <td><%= time_ago_in_words(p.created_at) %> ago</td>
+      <td><div class='signature'><%= p.user.email %></td></div>
+      <td><%= render partial: 'favorites/favorite', locals: { pricemark: p } %></td>
+      <td><%= link_to 'Show', pricemark_path(p) %></td>
+    </tr>
   <% end %>
-
-  </ul>
+  </tbody>
+</table>
 
 <% else %>
 

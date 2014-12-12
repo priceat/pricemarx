@@ -7,6 +7,8 @@
      inset: -1px 1px 1px #444;
 }
 
+
+
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
@@ -19,6 +21,13 @@
   .tag_head {
   font-size: 40px;
   color: #CC00FF;
+  text-decoration: underline;
+  text-align: center;
+  }
+
+ .mark_head {
+  font-size: 40px;
+  color: #FF0000;
   text-decoration: underline;
   text-align: center;
   }

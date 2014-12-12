@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user != nil
   end
+
+   def pricemark_owner?
+    Pricemark.where(user_id: current_user)
+   end
  
   def authorize
     redirect_to login_url, alert: "Not authorized" if current_user.nil?

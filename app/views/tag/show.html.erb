@@ -4,7 +4,8 @@
 <table class="table table-striped">
   <thead>
    <tr>
-      <th>URL </th>
+    <th>Title</th>
+      <th>URL</th>
       <th> Day Added </th>
       <th> Uploader </th>
       <th colspan="<%= @colspan %>"></th>
@@ -13,19 +14,19 @@
     <tbody>
        <% @pricemarks.each do |p| %>
     <tr>
+      <td><%= p.title %></td> 
       <td><%= link_to p.url, p.url %></td> 
       <td><%= time_ago_in_words(p.created_at) %> ago</td>
       <td><div class='signature'><%= p.user.email %></td></div>
       <% if logged_in? %>
       <td><%= render partial: 'favorites/favorite', locals: { pricemark: p } %></td>
       <% end %>
+       <td><%= link_to 'Show', pricemark_path(p) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
 <% else %>
-
-  <p>This tag is not associated with any PriceMarx. Go! Find!</p>
-
+<p>This tag is not associated with any PriceMarx. Go! Find!</p>
 <% end %>
+<%= link_to 'Add Your Mark', new_pricemark_path, class: 'btn btn-warning' %>

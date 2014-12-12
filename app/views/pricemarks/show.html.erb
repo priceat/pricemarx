@@ -1,13 +1,16 @@
-<p>
+<h3> Link Title: <%= @pricemark.title %> </h3>
+<h4> Tagged under: <%= @pricemark.tag_list %> </h4>
   <strong>Url:</strong>
   <%= @pricemark.url %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @pricemark.user %>
+  <%= @pricemark.user.email %>
 </p>
 <li><%= render partial: 'favorites/favorite', locals: { pricemark: @pricemark } %></li>
 
+<% if @pricemark.user == current_user %>
 <%= link_to 'Edit', edit_pricemark_path(@pricemark) %> |
+<% end %>
 <%= link_to 'Back', pricemarks_path %>

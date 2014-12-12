@@ -8,4 +8,9 @@ class Pricemark < ActiveRecord::Base
 
   @tags = Pricemark.tag_counts_on(:tags)
   
+  def pricemark_owner?
+    Pricemark.where(user_id: current_user)
+  end
+
+
 end
