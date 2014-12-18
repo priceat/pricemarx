@@ -13,35 +13,18 @@ Pricemark.destroy_all
 end
 users = User.all
 
-# seed hashtags
-#tag_list = ['test', 'culture', 'sports', 'politics', 'fun']
-#tag_list.each do |tag|
- # ActsAsTaggableOn::Tag.new(:name => tag).save
-#end
+tags = %w(sports politics fun girls news)
 
 # seed bookmarks
 50.times do
 Pricemark.create!(
     user: users.sample,
-    url: Faker::Internet.url
+    url: Faker::Internet.url,
+    title: Faker::Lorem.word,
+    tag_list: tags.sample(rand(1..5))
   )
-pricemarks = Pricemark.all
-  pricemarks.each do |pricemark|
-    pricemark.tag_list.add 'test', 'culture', 'sports', 'politics', 'fun'
-    pricemark.save
-  end
 end
 
-
-
-# like bookmarks
-#100.times do
- # user = users.sample
-  #Favorite.create!(
-   # user: user,
-    #bookmark: bookmarks.where('user_id != ?', user.id).sample
- # )
-#end
 
 puts "Seed finished."
 puts "#{User.count} users created."

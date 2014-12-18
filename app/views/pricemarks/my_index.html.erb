@@ -1,6 +1,7 @@
 <div class="container">
-<h1>My Pricemarx</h1>
+<div class="bottom-margin">My Pricemarx</div>
     <div class ="row">
+      <% if @pricemarks.count > 0 %>
     <% tag_cloud(@user_tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 <div class="col-md-2">
   <center>
@@ -10,11 +11,13 @@
   </center>
     </div>
     <% end %>
+    <% else %>
+    <div class="tagged"> You Haven't Tagged Anything Yet! Get Taggin'!!!</div>
+    <% end %>
   </div>
 </div>
-
 <div class="container">
-<h1>My Favorites</h1>
+<div class="bottom-margin">My Favorites</div>
     <div class ="row">
       <% tag_cloud(@favorite_tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 <div class="col-md-2">
@@ -27,3 +30,7 @@
     <% end %>
   </div>
 </div>
+</br>
+<div class="col-sm-offset-1">
+    <%= link_to 'Add Your Mark', new_pricemark_path, class: 'btn btn-success' %>
+  </div>

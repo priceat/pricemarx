@@ -1,32 +1,21 @@
-<h1>Sign Up</h1>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
- <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit "Sign Up" %></div>
+  <%= form_for @user, :html => {:class => "testbox"}  do |f| %>
+  <h6>Sign Up</h6>
+  <form action="/">
+  <label id="icon" for="name"><i class="icon-user"></i></label>
+  <%= f.text_field :name, class: "name", placeholder: "Name" %>
+  <label id="icon" for="name"><i class="icon-envelope "></i></label>
+  <%= f.text_field :email, class: "name", placeholder: "Email" %>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <%= f.password_field :password, class: "name", placeholder: "Password" %>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <%= f.password_field :password_confirmation, class: "name", placeholder: "Password Confirmation" %>
+    <center>
+    </br>
+      <div class="actions">
+   <%= f.submit "Register"%></div>
+ </center>
+  </form>
 <% end %>

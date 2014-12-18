@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "pricemarks/my_index"
   get 'tag/user_tags/:id', to: 'tag#user_tags', as: 'user_tags'
   get 'tag/favorite_tags/:id', to: 'tag#favorite_tags', as: 'favorite_tags'
+  get 'welcome' => 'welcome#index'
 
   mount_griddler
 

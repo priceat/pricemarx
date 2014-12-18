@@ -1,11 +1,19 @@
+<center><div class="jumbotron", align=center>
+   <div class="container">
 <h1>Welcome to PriceMarx</h1>
-<h2>X Marks the Spot - For Fun!</h2>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-  <% @tags.each do | tag | %>
-  <% link_to tag.name, tag_path(tag) %>
-  <% @pricemarks.tagged_with(tag).each do | pricemark | %>
-  <% link_to pricemark.title, pricemark.url %>
-  <% end %>
-  <% end %>
+<h2>X Marx the Spot</h2> 
+<span class="glyphicon glyphicon-remove"></span>
+<span class="glyphicon glyphicon-remove"></span>
+<span class="glyphicon glyphicon-remove"></span>
+<span class="glyphicon glyphicon-remove"></span>
+<span class="glyphicon glyphicon-remove"></span>
+<p>For Fun!</p>
+<% if current_user %>
+  <%= link_to 'Start Marking', new_pricemark_path, class: 'btn btn-success' %>
+  </div>
+    <% else %>
+      <%= link_to "Sign In", login_path, class: 'btn btn-primary' %> or 
+      <%= link_to "Sign Up", signup_path, class: 'btn btn-info' %>
+    <%end%>
+</div>
+</div>

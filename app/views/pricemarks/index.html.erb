@@ -1,5 +1,5 @@
 <div class="container">
-<h1>All Pricemarx</h1>
+<div class="bottom-margin">All Pricemarx</div>
     <div class ="row">
       
 <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
@@ -13,5 +13,7 @@
     <% end %>
   </div>
 </div>
-
-   
+</br>
+<div class="col-sm-offset-1">
+    <%= link_to 'Add Your Mark', new_pricemark_path, class: 'btn btn-success' %>
+  </div>

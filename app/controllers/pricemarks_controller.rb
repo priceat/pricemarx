@@ -2,6 +2,9 @@ class PricemarksController < ApplicationController
   before_action :set_pricemark, only: [:show, :edit, :update, :destroy]
   before_filter :authorize, only: [:create, :edit, :update]
 
+  require 'embedly'
+  require 'json'
+
   def index
     @pricemarks = Pricemark.all
     @tags = Pricemark.all.tag_counts
@@ -22,6 +25,7 @@ class PricemarksController < ApplicationController
   end
 
   def show
+    @url = embedly_api.oembed(:url => @pricemark.url).first
   end
 
   def new
@@ -74,6 +78,10 @@ class PricemarksController < ApplicationController
 
   def pricemark_params
     params.require(:pricemark).permit(:url, :tag_list, :title)
+  end
+
+  def embedly_api
+    Embedly::API.new :key => ENV['EMBEDLY_KEY']
   end
 
 end

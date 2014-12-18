@@ -1,27 +1,26 @@
+<div class="authform">
 <div class="mark_head">New Pricemark</div>
-<h2><center>X Marx le Spot!! </center></h2>
-     <%= form_for @pricemark, :html => {:class => "form-horizontal center"}  do |f| %>
+<center>
+<h3>Enter the title, URL and Tags for the Site</h3>
+</center>
+     <%= form_for @pricemark, :html => { :method => :put, :role => 'form'} do |f| %>
        <div class="form-group">
          <%= f.label :title, class: "col-md-4 control-label" %>
-         <div class="col-md-8">
          <%= f.text_field :title, class: 'form-control', placeholder: "Enter Pricemark title" %>
          </div>
-       </div>
        <div class="form-group">
          <%= f.label :url, class: "col-md-4 control-label" %>
-         <div class="col-md-8">
          <%= f.text_field :url, class: 'form-control', placeholder: "Paste the URL" %>
          </div>
-       </div>
        <div class="form-group">
-         <%= f.label :tag_list, class: "col-md-4 control-label" %>
-         <div class="col-md-8">
-         <%= f.text_area :tag_list, class: 'form-control', placeholder: "Tag the Bitch!" %>
+         <%= f.label "Site Tags", class: "col-md-4 control-label" %>
+         <%= f.text_field :tag_list, class: 'form-control', placeholder: " Separate with Commas" %>
          </div>
-       </div>
+       </br>
        <div class="form-group">
          <div class="col-sm-offset-4">
             <button type="submit" class="btn btn-success">Save</button>
        </div>
           </div>
          <% end %>
+       </div>

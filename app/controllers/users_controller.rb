@@ -8,13 +8,14 @@ class UsersController < ApplicationController
   @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to tags_path, notice: "Thank you for signing up!"
+      redirect_to pricemarks_path, notice: "Thank you for signing up!"
     else
-      render "new"
+      flash[:error] = "Invalid user information"
+       redirect_to :back
     end
   end
 
-   def show
+   def edit
       @user = User.find(params[:id])
    end
 
@@ -24,15 +25,19 @@ class UsersController < ApplicationController
        redirect_to pricemarks_path
      else
        flash[:error] = "Invalid user information"
-       redirect_to edit_user_registration_path
+       redirect_to edit_user_path
      end
    end
   
   def destroy
-    user = User.find(params[:id])
-    
-    user.destroy
-    redirect_to root_path, :notice => "User deleted."
+    @user = User.find(params[:id])
+    if @user.destroy
+      session.destroy
+      redirect_to root_path, :notice => "Account Terminated."
+    else
+      flash[:error] = "There was an error deleting your account. Please contact support!"
+      redirect_to edit_user_path
+    end
   end
 
   private

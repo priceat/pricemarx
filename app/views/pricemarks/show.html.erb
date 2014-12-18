@@ -1,12 +1,19 @@
-<h3> Link Title: <%= @pricemark.title %> </h3>
-<h4> Tagged under: <%= @pricemark.tag_list %> </h4>
+<div class="mark_show"><%= @pricemark.title %> </div>
+<div class="signature2"> Tagged under: <%= @pricemark.tag_list %> </div>
+</br>
   <strong>Url:</strong>
-  <%= @pricemark.url %>
+  <%= link_to @pricemark.url, @pricemark.url %>
 </p>
+  <% if @url.html.present? %>
+<p><%= @url.html.html_safe %></p>
+<% else %>
+  <%= image_tag ("#{@url.thumbnail_url}"), class: "thumb" %>
+  <% end %>
 
 <p>
-  <strong>User:</strong>
+  <strong>Added by:</strong>
   <%= @pricemark.user.email %>
+  <%= time_ago_in_words(@pricemark.created_at) %> ago
 </p>
 <li><%= render partial: 'favorites/favorite', locals: { pricemark: @pricemark } %></li>
 

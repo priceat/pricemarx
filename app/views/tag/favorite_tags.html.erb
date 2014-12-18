@@ -1,4 +1,4 @@
-<h1>Links Tagged as <%= @tag.name.titleize %></h1>
+<div class="tag_head">Links Tagged as <%= @tag.name.titleize %></div>
 
 <% if @pricemarks.count > 0 %>
 <table class="table table-striped">
@@ -22,9 +22,8 @@
   <% end %>
   </tbody>
 </table>
-
 <% else %>
-
+<%= will_paginate @pricemarks %>
   <p>This tag is not associated with any PriceMarx. Go! Find!</p>
-
 <% end %>
+<%= link_to 'Back', pricemarks_my_index_path, class: 'btn btn-warning' %> 

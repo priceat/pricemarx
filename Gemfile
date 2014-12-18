@@ -20,6 +20,8 @@ gem 'acts-as-taggable-on'
 gem 'griddler', '~> 1.0.0'
 gem 'griddler-mailgun', '~> 1.0.1'
 gem 'faker'
+gem 'embedly'
+gem 'will_paginate', '~> 3.0.5'
 
 
  group :production do

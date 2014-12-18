@@ -8,14 +8,14 @@
 </head>
 <body>
  <div class="container">
-    <div class="navbar-header">
        <ul class="nav nav-tabs">
+        <li><%= link_to 'Welcome Home', welcome_path %></li>
         <li><%= link_to 'PriceMarx', pricemarks_path %></li>
         <li><%= link_to 'My PriceMarx', pricemarks_my_index_path %></li>
 
         <div class="pull-right user-info">
           <% if current_user %>
-            Logged in as <%= link_to current_user.email, current_user  %>
+            Logged in as <%= link_to current_user.email, edit_user_path(current_user) %>
             <%= link_to logout_path, class: 'btn btn-danger btn-sm' do %>
           <span class="glyphicon glyphicon-off"></span>
          <% end %>
@@ -47,7 +47,6 @@
   <%= yield %>
   
   </div>
-</div>
 
 </body>
 </html>

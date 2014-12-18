@@ -7,12 +7,68 @@
      inset: -1px 1px 1px #444;
 }
 
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+  }
 
+/*Jumbotron custom boostrap CSS*/
+
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: #1F1C54;
+  background-color: #FF7F50;
+  width: 50%;
+  margin-top: 30px;
+}
+
+.jumbotron h2,
+.jumbotron .h2 {
+  color: #1F1C54;
+  font-size: 40px;
+  font-weight: 500;
+}
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+  color: #1F1C54;
+}
+.container .jumbotron {
+  border-radius: 50px;
+}
+.jumbotron .container {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .jumbotron {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 63px;
+  }
+}
 
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
+
+.bottom-margin {
+  font-size: 38px;
+  font-style: semibold;
+  text-decoration: underline;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
 
   .user-info {
     margin-top: 9px;
@@ -25,11 +81,22 @@
   text-align: center;
   }
 
+  .tagged {
+  font-size: 38px;
+  color: #3333FF;
+  }
+
  .mark_head {
   font-size: 40px;
   color: #FF0000;
   text-decoration: underline;
   text-align: center;
+  }
+
+.mark_show {
+  font-size: 36px;
+  color: #CC9900;
+  text-decoration: underline;
   }
 
   .nav {
@@ -43,4 +110,189 @@
  .signature {
    font-style: italic;
    font-size: small;
+}
+
+ .signature1 {
+   font-style: italic;
+   font-style: bold;
+}
+
+.signature2 {
+   font-size: 22px;
+   font-style: italic;
+   font-style: bold;
+}
+.cancel {
+  margin-bottom: 5px;
+}
+
+
+.authform {
+  padding-top: 30px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.authform form {
+  @extend .well;
+  @extend .well-lg;
+  padding-bottom: 40px;
+}
+.authform .button {
+  @extend .btn;
+  @extend .btn-primary;
+}
+.authform fieldset {
+  @extend .well;
+}
+
+.user-info {
+   margin-top: 20px;
+ }
+
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, 
+pre, form, fieldset, field_tag, input, textarea, p, blockquote, th, td { 
+  padding: 10px ;
+  margin:0;}
+
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+p2 {
+  font-size: 12px;
+  width: 150px;
+  display: inline-block;
+  margin-left: 18px;
+}
+h6 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+  padding-top: 10px;
+}
+
+html{
+  background-color: #ffffff;
+}
+
+.testbox {
+  margin: 20px auto;
+  width: 343px; 
+  height: 350px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
+.testbox1 {
+  margin: 20px auto;
+  width: 343px; 
+  height: 300px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+form{
+  margin: 0 30px;
+}
+
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=text],input[type=password]{
+  width: 200px; 
+  height: 39px; 
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 1px #cbc9c9;
+  margin-left: -5px;
+  margin-top: 10px; 
+  padding-left: 10px;
+}
+
+input[type=password_confirmation]{
+  margin-bottom: 25px;
+}
+
+#icon {
+  display: inline-block;
+  width: 50px;
+  background-color: #3a57af;
+  padding: 8px 0px 8px 15px;
+  margin-left: 10px;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+
+a.button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding: 6px 25px 0px 20px;
+  margin: 10px 8px 20px 0px;
+  display: inline-block;
+  float: justify;
+  text-decoration: none;
+  width: 100px; height: 27px; 
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #3a57af; 
+  -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
+  -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
+  box-shadow: 0 3px rgba(58,87,175,.75);
+  transition: all 0.1s linear 0s; 
+  top: 0px;
+}
+
+a.button:hover {
+  top: 3px;
+  background-color:#2e458b;
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none; 
+  box-shadow: none;
+  
 }

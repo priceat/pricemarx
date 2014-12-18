@@ -26,7 +26,9 @@
   <% end %>
   </tbody>
 </table>
+<%= will_paginate @pricemarks %>
 <% else %>
 <p>This tag is not associated with any PriceMarx. Go! Find!</p>
 <% end %>
-<%= link_to 'Add Your Mark', new_pricemark_path, class: 'btn btn-warning' %>
+<%= link_to 'Back', pricemarks_path, class: 'btn btn-warning' %> |
+<%= link_to 'Add Your Mark', new_pricemark_path, class: 'btn btn-success' %>
