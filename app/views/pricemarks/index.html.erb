@@ -1,5 +1,13 @@
 <div class="container">
 <div class="bottom-margin">All Pricemarx</div>
+
+<%= form_tag tag_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
     <div class ="row">
       
 <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>

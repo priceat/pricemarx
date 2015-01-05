@@ -8,6 +8,7 @@ class PricemarksController < ApplicationController
   def index
     @pricemarks = Pricemark.all
     @tags = Pricemark.all.tag_counts
+    @tag = Tag.search(params[:search])
   end
 
   def my_index

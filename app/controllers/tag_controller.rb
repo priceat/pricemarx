@@ -8,7 +8,7 @@ class TagController < ApplicationController
   def favorite_tags
     @tag = Tag.find(params[:id])
     favorites = Favorite.where(user_id: current_user)
-    @pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id)).paginate(page: params[:page], per_page: 10)
+    @pricemarks = Pricemark.tagged_with(@tag.name).where(id: favorites.pluck(:pricemark_id)).paginate(page: params[:page], per_page: 10)
   end
 
   def user_tags
