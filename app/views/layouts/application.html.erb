@@ -9,9 +9,13 @@
 <body>
  <div class="container">
        <ul class="nav nav-tabs">
-        <li><%= link_to 'Welcome Home', welcome_path %></li>
         <li><%= link_to 'PriceMarx', pricemarks_path %></li>
+        <% if current_user.present? %>
         <li><%= link_to 'My PriceMarx', pricemarks_my_index_path %></li>
+        <% else %>
+        <li><%= link_to 'Get Taggin!', welcome_path %></li>
+        <% end %>
+
 
         <div class="pull-right user-info">
           <% if current_user %>

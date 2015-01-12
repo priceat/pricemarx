@@ -1,28 +1,22 @@
 class PricemarksController < ApplicationController
   before_action :set_pricemark, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:create, :edit, :update]
+  before_filter :authenticate!, only: [:new, :create, :edit, :update]
+
 
   require 'embedly'
-  require 'json'
 
   def index
     @pricemarks = Pricemark.all
     @tags = Pricemark.all.tag_counts
-    @tag = Tag.search(params[:search])
   end
 
   def my_index
-    if logged_in?
-      @pricemarks = current_user.pricemarks.all
-      @user_tags = @pricemarks.tag_counts
-      favorites = Favorite.where(user_id: current_user)
-      favorite_pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id))
-      @favorite_tags = favorite_pricemarks.tag_counts
-      render pricemarks_my_index_path
-    else 
-      flash[:error] = "You have to be logged in, cat!"
-      redirect_to login_path
-    end
+    @pricemarks = current_user.pricemarks.all
+    @user_tags = @pricemarks.tag_counts
+    favorites = Favorite.where(user_id: current_user)
+    favorite_pricemarks = Pricemark.where(id: favorites.pluck(:pricemark_id))
+    @favorite_tags = favorite_pricemarks.tag_counts
+    render pricemarks_my_index_path
   end
 
   def show

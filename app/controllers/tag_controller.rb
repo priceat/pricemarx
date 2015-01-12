@@ -1,4 +1,5 @@
 class TagController < ApplicationController
+  skip_before_action :authenticate!
 
   def show
     @tag = Tag.find(params[:id])

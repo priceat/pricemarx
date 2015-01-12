@@ -30,8 +30,4 @@ class FavoritesController < TagController
 
   private
 
-  def set_pricemark
-    pricemark_ids = @tag.pricemarks.pluck(:id) 
-  end
-
 end

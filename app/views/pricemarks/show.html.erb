@@ -15,7 +15,9 @@
   <%= @pricemark.user.email %>
   <%= time_ago_in_words(@pricemark.created_at) %> ago
 </p>
+ <% if logged_in? %>
 <li><%= render partial: 'favorites/favorite', locals: { pricemark: @pricemark } %></li>
+  <% end %>
 
 <% if @pricemark.user == current_user %>
 <%= link_to 'Edit', edit_pricemark_path(@pricemark) %> |

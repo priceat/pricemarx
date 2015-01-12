@@ -3,7 +3,7 @@
 <center>
 <h3>Enter the title, URL and Tags for the Site</h3>
 </center>
-     <%= form_for @pricemark, :html => { :method => :put, :role => 'form'} do |f| %>
+     <%= form_for @pricemark do |f| %>
        <div class="form-group">
          <%= f.label :title, class: "col-md-4 control-label" %>
          <%= f.text_field :title, class: 'form-control', placeholder: "Enter Pricemark title" %>

@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate!
 
   def new
     @user = User.new
   end
 
   def create
-  @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to pricemarks_path, notice: "Thank you for signing up!"
-    else
-      flash[:error] = "Invalid user information"
-       redirect_to :back
-    end
+    @user = User.new(user_params)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to pricemarks_path, notice: "Thank you for signing up!"
+      else
+        flash[:error] = "Invalid user information"
+        redirect_to :back
+      end
   end
 
    def edit
@@ -31,10 +32,10 @@ class UsersController < ApplicationController
   
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
-      session.destroy
-      redirect_to root_path, :notice => "Account Terminated."
-    else
+      if @user.destroy
+        session.destroy
+        redirect_to root_path, :notice => "Account Terminated."
+      else
       flash[:error] = "There was an error deleting your account. Please contact support!"
       redirect_to edit_user_path
     end

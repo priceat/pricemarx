@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  skip_before_action :authenticate!
+
   def index
     @tags = ActsAsTaggableOn::Tag.all
     @pricemarks = Pricemark.all
